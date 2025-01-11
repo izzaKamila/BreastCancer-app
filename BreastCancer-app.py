@@ -13,9 +13,14 @@ import numpy as np
 import sys
 import sklearn
 
-nb_model = joblib.load('NB_joblib.sav')
-dt_model = joblib.load('DT_joblib.sav')
-rf_model = joblib.load('RF_joblib.sav')
+# Try-except block for loading models
+try:
+    nb_model = joblib.load('NB_joblib.sav')
+    dt_model = joblib.load('DT_joblib.sav')
+    rf_model = joblib.load('RF_joblib.sav')
+except Exception as e:
+    st.error(f"Error loading model files. Please ensure all model files exist in the correct location.")
+    st.stop()
 
 
 # sidebar for navigation
@@ -195,5 +200,3 @@ if (selected == 'Random Forest'):
 
 st.write("Python version:", sys.version)
 st.write("scikit-learn version:", sklearn.__version__)
-st.write("Current working directory:", os.getcwd())
-st.write("Files in current directory:", os.listdir())
