@@ -15,9 +15,9 @@ import numpy as np
 
 # loading the saved models
 
-nb_model = joblib.load('/Users/mac/Kuliah/UDINUS/Semester-4/Bimbingan Karier/Workshop Data Scientists/breast cancer wisconsin original/NB_joblib.sav')
-dt_model = joblib.load('/Users/mac/Kuliah/UDINUS/Semester-4/Bimbingan Karier/Workshop Data Scientists/breast cancer wisconsin original/DT_joblib.sav')
-rf_model = joblib.load('/Users/mac/Kuliah/UDINUS/Semester-4/Bimbingan Karier/Workshop Data Scientists/breast cancer wisconsin original/RF_joblib.sav')
+nb_model = joblib.load('NB_joblib.sav')
+dt_model = joblib.load('DT_joblib.sav')
+rf_model = joblib.load('RF_joblib.sav')
 
 
 # sidebar for navigation
