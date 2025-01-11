@@ -190,7 +190,7 @@ if (selected == 'Random Forest'):
         input_features = np.array([Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
                                    Bare_nuclei, Bland_chromatin, Normal_nucleoli]).reshape(1, -1)
         
-        cancer_pred = dt_model.predict(input_features)
+        cancer_pred = rf_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
             cancer_type = 'Benign'
