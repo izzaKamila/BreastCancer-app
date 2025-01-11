@@ -8,15 +8,12 @@ Created on Thu Jun  13 18:09:06 2024
 
 import streamlit as st
 from streamlit_option_menu import option_menu
-import joblib
 import numpy as np
-import sys
-import sklearn
+import pickle
 
-nb_model = joblib.load('NB_joblib.sav')
-dt_model = joblib.load('DT_joblib.sav')
-rf_model = joblib.load('RF_joblib.sav')
-
+nb_model = pickle.load(open('NB_model.sav', 'rb'))
+dt_model = pickle.load(open('DT_model.sav', 'rb'))
+rf_model = pickle.load(open('RF_model.sav', 'rb'))
 
 # sidebar for navigation
 with st.sidebar:
