@@ -10,35 +10,21 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import joblib
 import numpy as np
-import os
 import sys
 import sklearn
 
-
-
-# loading the saved models
-try:
-    # Mencoba load dari folder models
-    model_path = os.path.join('models')
-    nb_model = joblib.load(os.path.join(model_path, 'NB_joblib.sav'))
-    dt_model = joblib.load(os.path.join(model_path, 'DT_joblib.sav'))
-    rf_model = joblib.load(os.path.join(model_path, 'RF_joblib.sav'))
-except:
-    st.error('Error: Model files not found. Please check if model files exist in the correct location.')
-    st.stop()
+nb_model = joblib.load('NB_joblib.sav')
+dt_model = joblib.load('DT_joblib.sav')
+rf_model = joblib.load('RF_joblib.sav')
 
 
 # sidebar for navigation
 with st.sidebar:
-    
-    selected = option_menu('Breast Cancer Prediction System',
-                          
+    selected = option_menu('Breast Cancer Prediction System',          
                           ['Naive Bayes',
                            'Decision Tree',
                            'Random Forest'],
                           default_index=0)
-    
-    
 
 
 #Breast Cancer with NB
