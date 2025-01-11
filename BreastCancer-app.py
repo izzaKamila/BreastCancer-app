@@ -11,6 +11,8 @@ from streamlit_option_menu import option_menu
 import joblib
 import numpy as np
 import os
+import sys
+import sklearn
 
 
 
@@ -204,3 +206,8 @@ if (selected == 'Random Forest'):
             cancer_type = 'Malignant'
         
         st.success(cancer_type)
+
+st.write("Python version:", sys.version)
+st.write("scikit-learn version:", sklearn.__version__)
+st.write("Current working directory:", os.getcwd())
+st.write("Files in current directory:", os.listdir())
