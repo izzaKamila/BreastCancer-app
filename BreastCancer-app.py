@@ -10,14 +10,20 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import joblib
 import numpy as np
+import os
 
 
 
 # loading the saved models
-
-nb_model = joblib.load('NB_joblib.sav')
-dt_model = joblib.load('DT_joblib.sav')
-rf_model = joblib.load('RF_joblib.sav')
+try:
+    # Mencoba load dari folder models
+    model_path = os.path.join('models')
+    nb_model = joblib.load(os.path.join(model_path, 'NB_joblib.sav'))
+    dt_model = joblib.load(os.path.join(model_path, 'DT_joblib.sav'))
+    rf_model = joblib.load(os.path.join(model_path, 'RF_joblib.sav'))
+except:
+    st.error('Error: Model files not found. Please check if model files exist in the correct location.')
+    st.stop()
 
 
 # sidebar for navigation
