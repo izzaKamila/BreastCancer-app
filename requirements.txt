@@ -1,0 +1,5 @@
+streamlit
+streamlit-option-menu
+joblib
+numpy
+scikit-learn 
