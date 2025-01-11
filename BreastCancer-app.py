@@ -13,14 +13,9 @@ import numpy as np
 import sys
 import sklearn
 
-# Try-except block for loading models
-try:
-    nb_model = joblib.load('NB_joblib.sav')
-    dt_model = joblib.load('DT_joblib.sav')
-    rf_model = joblib.load('RF_joblib.sav')
-except Exception as e:
-    st.error(f"Error loading model files. Please ensure all model files exist in the correct location.")
-    st.stop()
+nb_model = joblib.load('NB_joblib.sav')
+dt_model = joblib.load('DT_joblib.sav')
+rf_model = joblib.load('RF_joblib.sav')
 
 
 # sidebar for navigation
@@ -45,28 +40,28 @@ if (selected == 'Naive Bayes'):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        Clump_thickness = st.number_input('Number of Clump Thickness')
+        Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
         
     with col2:
-        Uniformity_of_cell_size = st.number_input('Number of Size Cell')
+        Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
     
     with col3:
-        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape')
+        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
-        Marginal_adhesion = st.number_input('Marginal Adhesion value')
+        Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col2:
-        Single_epithelial_cell_size = st.number_input('Epithelial value')
+        Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col3:
-        Bare_nuclei = st.number_input('Bare Nuclei value')
+        Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
-        Bland_chromatin = st.number_input('Bland Chromatin value')
+        Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col2:
-        Normal_nucleoli = st.number_input('Normal Nucleoli value')
+        Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
     
     # code for Prediction
     cancer_type = ''
@@ -101,28 +96,28 @@ if (selected == 'Decision Tree'):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        Clump_thickness = st.number_input('Number of Clump Thickness')
+        Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
         
     with col2:
-        Uniformity_of_cell_size = st.number_input('Number of Size Cell')
+        Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
     
     with col3:
-        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape')
+        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
-        Marginal_adhesion = st.number_input('Marginal Adhesion value')
+        Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col2:
-        Single_epithelial_cell_size = st.number_input('Epithelial value')
+        Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col3:
-        Bare_nuclei = st.number_input('Bare Nuclei value')
+        Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
-        Bland_chromatin = st.number_input('Bland Chromatin value')
+        Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col2:
-        Normal_nucleoli = st.number_input('Normal Nucleoli value')
+        Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
     
     # code for Prediction
     cancer_type = ''
@@ -156,28 +151,28 @@ if (selected == 'Random Forest'):
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        Clump_thickness = st.number_input('Number of Clump Thickness')
+        Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
         
     with col2:
-        Uniformity_of_cell_size = st.number_input('Number of Size Cell')
+        Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
     
     with col3:
-        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape')
+        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
-        Marginal_adhesion = st.number_input('Marginal Adhesion value')
+        Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col2:
-        Single_epithelial_cell_size = st.number_input('Epithelial value')
+        Single_epithelial_cell_size = st.number_input('Epithelial value',  min_value=0.0, max_value=10.0, step=0.1)
     
     with col3:
-        Bare_nuclei = st.number_input('Bare Nuclei value')
+        Bare_nuclei = st.number_input('Bare Nuclei value',  min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
-        Bland_chromatin = st.number_input('Bland Chromatin value')
+        Bland_chromatin = st.number_input('Bland Chromatin value',  min_value=0.0, max_value=10.0, step=0.1)
     
     with col2:
-        Normal_nucleoli = st.number_input('Normal Nucleoli value')
+        Normal_nucleoli = st.number_input('Normal Nucleoli value',  min_value=0.0, max_value=10.0, step=0.1)
     
         
     # code for Prediction
@@ -197,6 +192,3 @@ if (selected == 'Random Forest'):
             cancer_type = 'Malignant'
         
         st.success(cancer_type)
-
-st.write("Python version:", sys.version)
-st.write("scikit-learn version:", sklearn.__version__)
