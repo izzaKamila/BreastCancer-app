@@ -108,9 +108,9 @@ if (selected == 'Naive Bayes'):
         cancer_pred = nb_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
-            cancer_type = 'Benign'
+            st.success(cancer_type = 'Benign')
         else:
-            cancer_type = 'Malignant'
+            st.error(cancer_type = 'Malignant')
         
         st.success(cancer_type)
 
@@ -166,9 +166,9 @@ if (selected == 'Decision Tree'):
         cancer_pred = dt_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
-            cancer_type = 'Benign'
+            st.success(cancer_type = 'Benign')
         else:
-            cancer_type = 'Malignant'
+            st.error(cancer_type = 'Malignant')
         
         st.success(cancer_type)
 
@@ -229,13 +229,9 @@ if (selected == 'Random Forest'):
         cancer_pred = rf_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
-            cancer_type = 'Benign'
+            st.success(cancer_type = 'Benign')
         else:
-            cancer_type = 'Malignant'
-
-        # Menampilkan hasil dengan warna sesuai jenis kanker
-        if cancer_type == 'Malignant':
-            st.markdown('<h2 style="color:red;"> Malignant </h2>', unsafe_allow_html=True)
+            st.error(cancer_type = 'Malignant')
         
         st.success(cancer_type)
 
