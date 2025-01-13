@@ -96,8 +96,12 @@ if (selected == 'Naive Bayes'):
     # creating a button for Prediction
     if st.button('Breast Cancer Test Result'):
         # Mengubah input menjadi array 2D
-        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
-                                   Bare_nuclei, Bland_chromatin, Normal_nucleoli]])
+        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
+                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
+                                Bland_chromatin, Normal_nucleoli]])
+        
+        # Periksa ukuran input
+        st.write("Input Features Shape: ", input_features.shape)
 
         cancer_pred = nb_model.predict(input_features)
         
@@ -155,8 +159,12 @@ if (selected == 'Decision Tree'):
     # creating a button for Prediction
     if st.button('Breast Cancer Test Result'):
         # Mengubah input menjadi array 2D
-        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
-                                   Bare_nuclei, Bland_chromatin, Normal_nucleoli]])
+        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
+                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
+                                Bland_chromatin, Normal_nucleoli]])
+        
+        # Periksa ukuran input
+        st.write("Input Features Shape: ", input_features.shape)
      
         cancer_pred = dt_model.predict(input_features)
         
@@ -214,8 +222,12 @@ if (selected == 'Random Forest'):
     # creating a button for Prediction
     if st.button('Breast Cancer Test Result'):
         # Mengubah input menjadi array 2D
-        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
-                                   Bare_nuclei, Bland_chromatin, Normal_nucleoli]])
+        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
+                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
+                                Bland_chromatin, Normal_nucleoli]])
+        
+        # Periksa ukuran input
+        st.write("Input Features Shape: ", input_features.shape)
   
         cancer_pred = rf_model.predict(input_features)
         
