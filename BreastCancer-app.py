@@ -12,9 +12,6 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import pickle
 
-st.write("Current directory:", os.getcwd())
-st.write("Files in directory:", os.listdir())
-
 required_files = ['NB_model.sav', 'DT_model.sav', 'RF_model.sav']
 missing_files = [file for file in required_files if not os.path.exists(file)]
 
