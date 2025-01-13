@@ -11,6 +11,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 import numpy as np
 import pickle
+import logging
 
 required_files = ['NB_model.sav', 'DT_model.sav', 'RF_model.sav']
 missing_files = [file for file in required_files if not os.path.exists(file)]
@@ -18,16 +19,19 @@ missing_files = [file for file in required_files if not os.path.exists(file)]
 if missing_files:
     st.error(f"Missing files: {', '.join(missing_files)}. Please upload these files to the project directory.")
     st.stop()
-    
+
+
+# Konfigurasi logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 try:
     nb_model = pickle.load(open('NB_model.sav', 'rb'))
     dt_model = pickle.load(open('DT_model.sav', 'rb'))
     rf_model = pickle.load(open('RF_model.sav', 'rb'))
 
-    # Debugging tipe model
-    st.write("Type of nb_model:", type(nb_model))
-    st.write("Type of dt_model:", type(dt_model))
-    st.write("Type of rf_model:", type(rf_model))
+    # Debugging tipe model (log ke terminal/file)
+    logging.info("Type of nb_model: %s", type(nb_model))
+    logging.info("Type of dt_model: %s", type(dt_model))
+    logging.info("Type of rf_model: %s", type(rf_model))
 except FileNotFoundError:
     st.error("""
     Model files not found. Please ensure these files exist in the root directory:
