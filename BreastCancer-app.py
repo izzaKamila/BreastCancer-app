@@ -251,6 +251,12 @@ if (selected == 'Random Forest'):
             cancer_type = 'Benign'
         else:
             cancer_type = 'Malignant'
+
+        # Menampilkan hasil dengan warna sesuai jenis kanker
+    if cancer_type == 'Malignant':
+        st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
+    else:
+        st.markdown('<h2 style="color:green;">Prediksi: Benign</h2>', unsafe_allow_html=True)
         
         st.success(cancer_type)
 
