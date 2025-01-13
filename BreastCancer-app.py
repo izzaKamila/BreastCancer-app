@@ -61,7 +61,9 @@ if (selected == 'Naive Bayes'):
     # memuat model Naive Bayes
     with open('NB_model.sav', 'rb') as file: 
         nb_model = pickle.load(file)    
-        
+
+    # Menampilkan tipe model untuk verifikasi
+    st.write("Model Type: ", type(nb_model))
     
     # getting the input data from the user
     col1, col2, col3 = st.columns(3)
@@ -126,6 +128,9 @@ if (selected == 'Decision Tree'):
     with open('DT_model.sav', 'rb') as file: 
         dt_model = pickle.load(file)   
 
+    # Menampilkan tipe model untuk verifikasi
+    st.write("Model Type: ", type(dt_model))
+    
     # getting the input data from the user
     col1, col2, col3 = st.columns(3)
     
@@ -186,7 +191,10 @@ if (selected == 'Random Forest'):
     st.write("")
     
     with open('RF_model.sav', 'rb') as file: 
-        rf_model = pickle.load(file)  
+        rf_model = pickle.load(file)
+
+    # Menampilkan tipe model untuk verifikasi
+    st.write("Model Type: ", type(rf_model))
     
     # getting the input data from the user
     col1, col2, col3 = st.columns(3)
