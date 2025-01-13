@@ -67,10 +67,6 @@ if (selected == 'Naive Bayes'):
     # memuat model Naive Bayes
     with open('NB2_model.sav', 'rb') as file: 
         nb_model = pickle.load(file)    
-
-    # Menampilkan tipe model untuk verifikasi
-    st.write("Model Type: ", type(nb_model))
-    print(type(nb_model))
     
     # getting the input data from the user
     col1, col2, col3 = st.columns(3)
@@ -108,9 +104,6 @@ if (selected == 'Naive Bayes'):
         input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
                                 Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
                                 Bland_chromatin, Normal_nucleoli]])
-        
-        # Periksa ukuran input
-        st.write("Input Features Shape: ", input_features.shape)
 
         cancer_pred = nb_model.predict(input_features)
         
@@ -132,9 +125,6 @@ if (selected == 'Decision Tree'):
            
     with open('DT2_model.sav', 'rb') as file: 
         dt_model = pickle.load(file)   
-
-    # Menampilkan tipe model untuk verifikasi
-    st.write("Model Type: ", type(dt_model))
     
     # getting the input data from the user
     col1, col2, col3 = st.columns(3)
@@ -172,9 +162,6 @@ if (selected == 'Decision Tree'):
         input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
                                 Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
                                 Bland_chromatin, Normal_nucleoli]])
-        
-        # Periksa ukuran input
-        st.write("Input Features Shape: ", input_features.shape)
      
         cancer_pred = dt_model.predict(input_features)
         
@@ -197,9 +184,6 @@ if (selected == 'Random Forest'):
     
     with open('RF2_model.sav', 'rb') as file: 
         rf_model = pickle.load(file)
-
-    # Menampilkan tipe model untuk verifikasi
-    st.write("Model Type: ", type(rf_model))
     
     # getting the input data from the user
     col1, col2, col3 = st.columns(3)
@@ -241,9 +225,6 @@ if (selected == 'Random Forest'):
         input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
                                 Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
                                 Bland_chromatin, Normal_nucleoli, Mitoses]])
-        
-        # Periksa ukuran input
-        st.write("Input Features Shape: ", input_features.shape)
   
         cancer_pred = rf_model.predict(input_features)
         
@@ -254,9 +235,7 @@ if (selected == 'Random Forest'):
 
         # Menampilkan hasil dengan warna sesuai jenis kanker
         if cancer_type == 'Malignant':
-            st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
-        else:
-            st.markdown('<h2 style="color:green;">Prediksi: Benign</h2>', unsafe_allow_html=True)
+            st.markdown('<h2 style="color:red;"> Malignant </h2>', unsafe_allow_html=True)
         
         st.success(cancer_type)
 
