@@ -114,7 +114,7 @@ if (selected == 'Naive Bayes'):
 
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
-        else
+        else:
             st.success(cancer_type)
 
 
@@ -175,7 +175,7 @@ if (selected == 'Decision Tree'):
         
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
-        else
+        else:
             st.success(cancer_type)
 
 
@@ -241,5 +241,5 @@ if (selected == 'Random Forest'):
         
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
-        else
+        else:
             st.success(cancer_type)
