@@ -240,7 +240,7 @@ if (selected == 'Random Forest'):
         # Mengubah input menjadi array 2D
         input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
                                 Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
-                                Bland_chromatin, Normal_nucleoli]])
+                                Bland_chromatin, Normal_nucleoli, Mitoses]])
         
         # Periksa ukuran input
         st.write("Input Features Shape: ", input_features.shape)
