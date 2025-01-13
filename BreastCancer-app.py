@@ -12,6 +12,13 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import pickle
 
+try:
+    nb_model = pickle.load(open('NB_model.sav', 'rb'))
+    dt_model = pickle.load(open('DT_model.sav', 'rb'))
+    rf_model = pickle.load(open('RF_model.sav', 'rb'))
+except Exception as e:
+    st.error(f"Error loading models: {str(e)}")
+    st.stop()
 required_files = ['NB_model.sav', 'DT_model.sav', 'RF_model.sav']
 missing_files = [file for file in required_files if not os.path.exists(file)]
 
