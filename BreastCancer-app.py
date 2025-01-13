@@ -111,10 +111,11 @@ if (selected == 'Naive Bayes'):
             cancer_type = 'Benign'
         else:
             cancer_type = 'Malignant'
-        
-        st.success(cancer_type)
+
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
+        else
+            st.success(cancer_type)
 
 
 #Breast Cancer with DT
@@ -172,9 +173,10 @@ if (selected == 'Decision Tree'):
         else:
             cancer_type = 'Malignant'
         
-        st.success(cancer_type)
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
+        else
+            st.success(cancer_type)
 
 
    
@@ -237,6 +239,7 @@ if (selected == 'Random Forest'):
         else:
             cancer_type = 'Malignant'
         
-        st.success(cancer_type)
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
+        else
+            st.success(cancer_type)
