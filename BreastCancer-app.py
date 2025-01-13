@@ -108,11 +108,13 @@ if (selected == 'Naive Bayes'):
         cancer_pred = nb_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
-            st.success(cancer_type = 'Benign')
+            cancer_type = 'Benign'
         else:
-            st.error(cancer_type = 'Malignant')
+            cancer_type = 'Malignant'
         
         st.success(cancer_type)
+        if cancer_type == 'Malignant':
+            st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
 
 
 #Breast Cancer with DT
@@ -166,11 +168,13 @@ if (selected == 'Decision Tree'):
         cancer_pred = dt_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
-            st.success(cancer_type = 'Benign')
+            cancer_type = 'Benign'
         else:
-            st.error(cancer_type = 'Malignant')
+            cancer_type = 'Malignant'
         
         st.success(cancer_type)
+        if cancer_type == 'Malignant':
+            st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
 
 
    
