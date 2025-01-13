@@ -90,7 +90,9 @@ if (selected == 'Naive Bayes'):
         # Mengubah input menjadi array 2D
         input_features = np.array([Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
                                    Bare_nuclei, Bland_chromatin, Normal_nucleoli]).reshape(1, -1)
-        
+
+        with open('NB_model.sav', 'rb') as file: 
+            nb_model = pickle.load(file)
         cancer_pred = nb_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
@@ -146,7 +148,9 @@ if (selected == 'Decision Tree'):
         # Mengubah input menjadi array 2D
         input_features = np.array([Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
                                    Bare_nuclei, Bland_chromatin, Normal_nucleoli]).reshape(1, -1)
-        
+       
+        with open('DT_model.sav', 'rb') as file: 
+            dt_model = pickle.load(file)        
         cancer_pred = dt_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
@@ -202,7 +206,9 @@ if (selected == 'Random Forest'):
         # Mengubah input menjadi array 2D
         input_features = np.array([Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, Marginal_adhesion, Single_epithelial_cell_size,
                                    Bare_nuclei, Bland_chromatin, Normal_nucleoli]).reshape(1, -1)
-        
+
+        with open('RF_model.sav', 'rb') as file: 
+            rf_model = pickle.load(file)    
         cancer_pred = rf_model.predict(input_features)
         
         if (cancer_pred[0] == 2):
