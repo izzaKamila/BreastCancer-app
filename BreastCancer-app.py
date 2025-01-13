@@ -70,6 +70,7 @@ if (selected == 'Naive Bayes'):
 
     # Menampilkan tipe model untuk verifikasi
     st.write("Model Type: ", type(nb_model))
+    print(type(nb_model))
     
     # getting the input data from the user
     col1 = st.columns(1)
