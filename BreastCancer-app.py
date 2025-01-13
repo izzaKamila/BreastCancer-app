@@ -127,7 +127,7 @@ if (selected == 'Decision Tree'):
     
     #page title
     st.title('Breast Cancer Prediction')
-    st.header('The Accuracy using Decision Tree is 89.1%')
+    st.header('The Accuracy using Decision Tree is 90.6%')
     st.write("")
            
     with open('DT2_model.sav', 'rb') as file: 
