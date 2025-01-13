@@ -15,7 +15,7 @@ import logging
 import sklearn
 print(sklearn.__version__)
 
-required_files = ['NB_model.sav', 'DT_model.sav', 'RF_model.sav']
+required_files = ['NB2_model.sav', 'DT2_model.sav', 'RF2_model.sav']
 missing_files = [file for file in required_files if not os.path.exists(file)]
 
 if missing_files:
@@ -26,9 +26,9 @@ if missing_files:
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 try:
     # Memuat semua model pada awal
-    nb_model = pickle.load(open('NB_model.sav', 'rb'))
-    dt_model = pickle.load(open('DT_model.sav', 'rb'))
-    rf_model = pickle.load(open('RF_model.sav', 'rb'))
+    nb_model = pickle.load(open('NB2_model.sav', 'rb'))
+    dt_model = pickle.load(open('DT2_model.sav', 'rb'))
+    rf_model = pickle.load(open('RF2_model.sav', 'rb'))
 
     # Debugging tipe model (log ke terminal/file)
     logging.info("Type of nb_model: %s", type(nb_model))
@@ -37,9 +37,9 @@ try:
 except FileNotFoundError:
     st.error("""
     Model files not found. Please ensure these files exist in the root directory:
-    - NB_model.sav
-    - DT_model.sav
-    - RF_model.sav
+    - NB2_model.sav
+    - DT2_model.sav
+    - RF2_model.sav
     """)
     st.stop()
 
