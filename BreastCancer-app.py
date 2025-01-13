@@ -22,10 +22,10 @@ if missing_files:
     st.error(f"Missing files: {', '.join(missing_files)}. Please upload these files to the project directory.")
     st.stop()
 
+
 # Konfigurasi logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 try:
-    # Memuat semua model pada awal
     nb_model = pickle.load(open('NB2_model.sav', 'rb'))
     dt_model = pickle.load(open('DT2_model.sav', 'rb'))
     rf_model = pickle.load(open('RF2_model.sav', 'rb'))
@@ -37,100 +37,221 @@ try:
 except FileNotFoundError:
     st.error("""
     Model files not found. Please ensure these files exist in the root directory:
-    - NB2_model.sav
-    - DT2_model.sav
-    - RF2_model.sav
+    - NB_model.sav
+    - DT_model.sav
+    - RF_model.sav
     """)
     st.stop()
 
-# Sidebar for navigation
+# sidebar for navigation
 with st.sidebar:
     selected = option_menu('Breast Cancer Prediction System',          
-                          ['Naive Bayes', 'Decision Tree', 'Random Forest'],
+                          ['Naive Bayes',
+                           'Decision Tree',
+                           'Random Forest'],
                           default_index=0)
 
-# Menampilkan halaman berdasarkan pilihan model
-if selected == 'Naive Bayes':
+
+import pickle
+import numpy as np
+import streamlit as st
+
+#Breast Cancer with NB
+if (selected == 'Naive Bayes'):
+    
+    #page title
     st.title('Breast Cancer Prediction')
     st.header('The Accuracy using Naive Bayes is 96.7%')
     st.write("")
 
+    # memuat model Naive Bayes
+    with open('NB2_model.sav', 'rb') as file: 
+        nb_model = pickle.load(file)    
+
     # Menampilkan tipe model untuk verifikasi
     st.write("Model Type: ", type(nb_model))
+    print(type(nb_model))
+    
+    # getting the input data from the user
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
+        
+    with col2:
+        Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col3:
+        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col1:
+        Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col2:
+        Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col3:
+        Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col1:
+        Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col2:
+        Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    # code for Prediction
+    cancer_type = ''
+    
+    # creating a button for Prediction
+    if st.button('Breast Cancer Test Result'):
+        # Mengubah input menjadi array 2D
+        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
+                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
+                                Bland_chromatin, Normal_nucleoli]])
+        
+        # Periksa ukuran input
+        st.write("Input Features Shape: ", input_features.shape)
 
-elif selected == 'Decision Tree':
+        cancer_pred = nb_model.predict(input_features)
+        
+        if (cancer_pred[0] == 2):
+            cancer_type = 'Benign'
+        else:
+            cancer_type = 'Malignant'
+        
+        st.success(cancer_type)
+
+
+#Breast Cancer with DT
+if (selected == 'Decision Tree'):
+    
+    #page title
     st.title('Breast Cancer Prediction')
     st.header('The Accuracy using Decision Tree is 89.1%')
     st.write("")
+           
+    with open('DT2_model.sav', 'rb') as file: 
+        dt_model = pickle.load(file)   
 
     # Menampilkan tipe model untuk verifikasi
     st.write("Model Type: ", type(dt_model))
+    
+    # getting the input data from the user
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
+        
+    with col2:
+        Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col3:
+        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col1:
+        Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col2:
+        Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col3:
+        Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col1:
+        Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col2:
+        Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    # code for Prediction
+    cancer_type = ''
+    
+    # creating a button for Prediction
+    if st.button('Breast Cancer Test Result'):
+        # Mengubah input menjadi array 2D
+        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
+                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
+                                Bland_chromatin, Normal_nucleoli]])
+        
+        # Periksa ukuran input
+        st.write("Input Features Shape: ", input_features.shape)
+     
+        cancer_pred = dt_model.predict(input_features)
+        
+        if (cancer_pred[0] == 2):
+            cancer_type = 'Benign'
+        else:
+            cancer_type = 'Malignant'
+        
+        st.success(cancer_type)
 
-elif selected == 'Random Forest':
+
+   
+#Breast Cancer with RF
+if (selected == 'Random Forest'):
+    
+    #page title
     st.title('Breast Cancer Prediction')
     st.header('The Accuracy using Random Forest is 94.9%')
     st.write("")
+    
+    with open('RF2_model.sav', 'rb') as file: 
+        rf_model = pickle.load(file)
 
     # Menampilkan tipe model untuk verifikasi
     st.write("Model Type: ", type(rf_model))
+    
+    # getting the input data from the user
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
+        
+    with col2:
+        Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col3:
+        Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col1:
+        Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col2:
+        Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col3:
+        Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col1:
+        Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
+    
+    with col2:
+        Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
 
-# Form Input untuk semua model
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    Clump_thickness = st.number_input('Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
-with col2:
-    Uniformity_of_cell_size = st.number_input('Uniformity of Cell Size', min_value=0.0, max_value=10.0, step=0.1)
-with col3:
-    Uniformity_of_cell_shape = st.number_input('Uniformity of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
-with col1:
-    Marginal_adhesion = st.number_input('Marginal Adhesion', min_value=0.0, max_value=10.0, step=0.1)
-with col2:
-    Single_epithelial_cell_size = st.number_input('Single Epithelial Cell Size', min_value=0.0, max_value=10.0, step=0.1)
-with col3:
-    Bare_nuclei = st.number_input('Bare Nuclei', min_value=0.0, max_value=10.0, step=0.1)
-with col1:
-    Bland_chromatin = st.number_input('Bland Chromatin', min_value=0.0, max_value=10.0, step=0.1)
-with col2:
-    Normal_nucleoli = st.number_input('Normal Nucleoli', min_value=0.0, max_value=10.0, step=0.1)
-
-# Code for Prediction
-cancer_type = ''
-
-# Prediction Button
-if st.button('Breast Cancer Test Result'):
-    # Mengubah input menjadi array 2D (pastikan input adalah array 2D)
-    input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape,
-                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei,
+    with col3:
+        Mitoses = st.number_input('Mitoses', min_value=0.0, max_value=10.0, step=0.1)
+    
+        
+    # code for Prediction
+    cancer_type = ''
+    
+    # creating a button for Prediction
+    if st.button('Breast Cancer Test Result'):
+        # Mengubah input menjadi array 2D
+        input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
+                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
                                 Bland_chromatin, Normal_nucleoli]])
+        
+        # Periksa ukuran input
+        st.write("Input Features Shape: ", input_features.shape)
+  
+        cancer_pred = rf_model.predict(input_features)
+        
+        if (cancer_pred[0] == 2):
+            cancer_type = 'Benign'
+        else:
+            cancer_type = 'Malignant'
+        
+        st.success(cancer_type)
 
-    # Periksa ukuran input untuk memastikan input adalah array 2D
-    st.write("Input Features Shape: ", input_features.shape)
 
-    # Melakukan prediksi berdasarkan model yang dipilih
-    if selected == 'Naive Bayes':
-        try:
-            cancer_pred = nb_model.predict(input_features)
-        except Exception as e:
-            st.error(f"Error in prediction: {e}")
-            st.stop()
-    elif selected == 'Decision Tree':
-        try:
-            cancer_pred = dt_model.predict(input_features)
-        except Exception as e:
-            st.error(f"Error in prediction: {e}")
-            st.stop()
-    elif selected == 'Random Forest':
-        try:
-            cancer_pred = rf_model.predict(input_features)
-        except Exception as e:
-            st.error(f"Error in prediction: {e}")
-            st.stop()
-
-    # Menentukan jenis kanker
-    if cancer_pred[0] == 2:
-        cancer_type = 'Benign'
-    else:
-        cancer_type = 'Malignant'
-
-    st.success(f"Prediksi: {cancer_type}")
