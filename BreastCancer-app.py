@@ -6,14 +6,18 @@ Created on Thu Jun  13 18:09:06 2024
 @author: mac
 """
 
+import os
 import streamlit as st
 from streamlit_option_menu import option_menu
 import numpy as np
 import pickle
 
-nb_model = pickle.load(open('NB_model.sav', 'rb'))
-dt_model = pickle.load(open('DT_model.sav', 'rb'))
-rf_model = pickle.load(open('RF_model.sav', 'rb'))
+required_files = ['NB_model.sav', 'DT_model.sav', 'RF_model.sav']
+missing_files = [file for file in required_files if not os.path.exists(file)]
+
+if missing_files:
+    st.error(f"Missing files: {', '.join(missing_files)}. Please upload these files to the project directory.")
+    st.stop()
 
 # sidebar for navigation
 with st.sidebar:
@@ -189,3 +193,5 @@ if (selected == 'Random Forest'):
             cancer_type = 'Malignant'
         
         st.success(cancer_type)
+
+
