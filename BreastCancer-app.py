@@ -99,21 +99,33 @@ cancer_type = ''
 
 # Prediction Button
 if st.button('Breast Cancer Test Result'):
-    # Mengubah input menjadi array 2D
+    # Mengubah input menjadi array 2D (pastikan input adalah array 2D)
     input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape,
                                 Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei,
                                 Bland_chromatin, Normal_nucleoli]])
 
-    # Periksa ukuran input
+    # Periksa ukuran input untuk memastikan input adalah array 2D
     st.write("Input Features Shape: ", input_features.shape)
 
     # Melakukan prediksi berdasarkan model yang dipilih
     if selected == 'Naive Bayes':
-        cancer_pred = nb_model.predict(input_features)
+        try:
+            cancer_pred = nb_model.predict(input_features)
+        except Exception as e:
+            st.error(f"Error in prediction: {e}")
+            st.stop()
     elif selected == 'Decision Tree':
-        cancer_pred = dt_model.predict(input_features)
+        try:
+            cancer_pred = dt_model.predict(input_features)
+        except Exception as e:
+            st.error(f"Error in prediction: {e}")
+            st.stop()
     elif selected == 'Random Forest':
-        cancer_pred = rf_model.predict(input_features)
+        try:
+            cancer_pred = rf_model.predict(input_features)
+        except Exception as e:
+            st.error(f"Error in prediction: {e}")
+            st.stop()
 
     # Menentukan jenis kanker
     if cancer_pred[0] == 2:
