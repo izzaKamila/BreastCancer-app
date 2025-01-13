@@ -236,6 +236,3 @@ if (selected == 'Random Forest'):
         st.success(cancer_type)
         if cancer_type == 'Malignant':
             st.markdown('<h2 style="color:red;">Prediksi: Malignant</h2>', unsafe_allow_html=True)
-        else:
-            st.markdown('<h2 style="color:green;">Prediksi: Benign</h2>', unsafe_allow_html=True)
-
