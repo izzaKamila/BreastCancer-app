@@ -53,22 +53,26 @@ with st.sidebar:
                           default_index=0)
 
 
-#Breast Cancer with NB
-if (selected == 'Naive Bayes'):
+import pickle
+import numpy as np
+import streamlit as st
+
+# Breast Cancer with Naive Bayes
+if selected == 'Naive Bayes':
     
-    #page title
+    # Judul halaman
     st.title('Breast Cancer Prediction')
     st.header('The Accuracy using Naive Bayes is 96.7%')
     st.write("")
 
-    # memuat model Naive Bayes
+    # Memuat model Naive Bayes
     with open('NB_model.sav', 'rb') as file: 
-        nb_model = pickle.load(file)    
+        nb_model = pickle.load(file)
 
     # Menampilkan tipe model untuk verifikasi
     st.write("Model Type: ", type(nb_model))
     
-    # getting the input data from the user
+    # Mendapatkan input data dari pengguna
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -95,27 +99,34 @@ if (selected == 'Naive Bayes'):
     with col2:
         Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
     
-    # code for Prediction
+    # Kode untuk Prediksi
     cancer_type = ''
     
-    # creating a button for Prediction
+    # Membuat tombol untuk prediksi
     if st.button('Breast Cancer Test Result'):
         # Mengubah input menjadi array 2D
         input_features = np.array([[Clump_thickness, Uniformity_of_cell_size, Uniformity_of_cell_shape, 
-                                Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
-                                Bland_chromatin, Normal_nucleoli]])
-        
-        # Periksa ukuran input
+                                   Marginal_adhesion, Single_epithelial_cell_size, Bare_nuclei, 
+                                   Bland_chromatin, Normal_nucleoli]])
+
+        # Memeriksa ukuran array input
         st.write("Input Features Shape: ", input_features.shape)
 
-        cancer_pred = nb_model.predict(input_features)
-        
-        if (cancer_pred[0] == 2):
-            cancer_type = 'Benign'
-        else:
-            cancer_type = 'Malignant'
-        
-        st.success(cancer_type)
+        # Melakukan prediksi
+        try:
+            cancer_pred = nb_model.predict(input_features)
+            
+            # Menentukan jenis kanker berdasarkan hasil prediksi
+            if cancer_pred[0] == 2:
+                cancer_type = 'Benign'
+            else:
+                cancer_type = 'Malignant'
+            
+            # Menampilkan hasil prediksi
+            st.success(f"Prediksi: {cancer_type}")
+        except Exception as e:
+            st.error(f"Terjadi kesalahan saat prediksi: {e}")
+
 
 
 
