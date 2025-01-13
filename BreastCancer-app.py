@@ -12,18 +12,32 @@ from streamlit_option_menu import option_menu
 import numpy as np
 import pickle
 
-try:
-    nb_model = pickle.load(open('NB_model.sav', 'rb'))
-    dt_model = pickle.load(open('DT_model.sav', 'rb'))
-    rf_model = pickle.load(open('RF_model.sav', 'rb'))
-except Exception as e:
-    st.error(f"Error loading models: {str(e)}")
-    st.stop()
+st.write("Current directory:", os.getcwd())
+st.write("Files in directory:", os.listdir())
+
 required_files = ['NB_model.sav', 'DT_model.sav', 'RF_model.sav']
 missing_files = [file for file in required_files if not os.path.exists(file)]
 
 if missing_files:
     st.error(f"Missing files: {', '.join(missing_files)}. Please upload these files to the project directory.")
+    st.stop()
+    
+try:
+    nb_model = pickle.load(open('NB_model.sav', 'rb'))
+    dt_model = pickle.load(open('DT_model.sav', 'rb'))
+    rf_model = pickle.load(open('RF_model.sav', 'rb'))
+
+    # Debugging tipe model
+    st.write("Type of nb_model:", type(nb_model))
+    st.write("Type of dt_model:", type(dt_model))
+    st.write("Type of rf_model:", type(rf_model))
+except FileNotFoundError:
+    st.error("""
+    Model files not found. Please ensure these files exist in the root directory:
+    - NB_model.sav
+    - DT_model.sav
+    - RF_model.sav
+    """)
     st.stop()
 
 # sidebar for navigation
