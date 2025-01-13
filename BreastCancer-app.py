@@ -73,30 +73,30 @@ if (selected == 'Naive Bayes'):
     st.write("Model Type: ", type(nb_model))
     
     # getting the input data from the user
-    col1, col2, col3 = st.columns(1)
+    col1 = st.columns(1)
     
     with col1:
         Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
         
-    with col2:
+    with col1:
         Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col3:
+    with col1:
         Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
         Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col2:
+    with col1:
         Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col3:
+    with col1:
         Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
         Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col2:
+    with col1:
         Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
     
     # code for Prediction
@@ -137,30 +137,30 @@ if (selected == 'Decision Tree'):
     st.write("Model Type: ", type(dt_model))
     
     # getting the input data from the user
-    col1, col2, col3 = st.columns(3)
+    col1 = st.columns(1)
     
     with col1:
         Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
         
-    with col2:
+    with col1:
         Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col3:
+    with col1:
         Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
         Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col2:
+    with col1:
         Single_epithelial_cell_size = st.number_input('Epithelial value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col3:
+    with col1:
         Bare_nuclei = st.number_input('Bare Nuclei value', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
         Bland_chromatin = st.number_input('Bland Chromatin value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col2:
+    with col1:
         Normal_nucleoli = st.number_input('Normal Nucleoli value', min_value=0.0, max_value=10.0, step=0.1)
     
     # code for Prediction
@@ -202,30 +202,30 @@ if (selected == 'Random Forest'):
     st.write("Model Type: ", type(rf_model))
     
     # getting the input data from the user
-    col1, col2, col3 = st.columns(3)
+    col1= st.columns(1)
     
     with col1:
         Clump_thickness = st.number_input('Number of Clump Thickness', min_value=0.0, max_value=10.0, step=0.1)
         
-    with col2:
+    with col1:
         Uniformity_of_cell_size = st.number_input('Number of Size Cell', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col3:
+    with col1:
         Uniformity_of_cell_shape = st.number_input('Number of Cell Shape', min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
         Marginal_adhesion = st.number_input('Marginal Adhesion value', min_value=0.0, max_value=10.0, step=0.1)
     
-    with col2:
+    with col1:
         Single_epithelial_cell_size = st.number_input('Epithelial value',  min_value=0.0, max_value=10.0, step=0.1)
     
-    with col3:
+    with col1:
         Bare_nuclei = st.number_input('Bare Nuclei value',  min_value=0.0, max_value=10.0, step=0.1)
     
     with col1:
         Bland_chromatin = st.number_input('Bland Chromatin value',  min_value=0.0, max_value=10.0, step=0.1)
     
-    with col2:
+    with col1:
         Normal_nucleoli = st.number_input('Normal Nucleoli value',  min_value=0.0, max_value=10.0, step=0.1)
     
         
