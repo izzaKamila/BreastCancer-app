@@ -61,7 +61,7 @@ if (selected == 'Naive Bayes'):
     
     #page title
     st.title('Breast Cancer Prediction')
-    st.header('The Accuracy using Naive Bayes is 96.7%')
+    st.header('The Accuracy using Naive Bayes is 97.8%')
     st.write("")
 
     # memuat model Naive Bayes
@@ -120,7 +120,7 @@ if (selected == 'Decision Tree'):
     
     #page title
     st.title('Breast Cancer Prediction')
-    st.header('The Accuracy using Decision Tree is 90.6%')
+    st.header('The Accuracy using Decision Tree is 91.3%')
     st.write("")
            
     with open('DT2_model.sav', 'rb') as file: 
